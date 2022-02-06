@@ -1,3 +1,57 @@
-0 scenarios
-0 steps
-0m00.000s
+Feature: Bowling game
+
+  Scenario Outline: Playing a game of ten turns
+    Given a "8-,7-,9-,3-,5-,1-,6-,5-,5-,5-" per turns
+    When calculate the score
+    Then return the 51
+    ✖ failed
+      AssertionError
+          + expected - actual
+      
+          -54
+          +51
+      
+          at World.<anonymous> (/home/badace7/dev/kata-wemanity/kata-cucumber-jest/bootstraps/bootstrap-nodejs-cucumber-jest/features/steps/sample.ts:25:25)
+
+  Scenario Outline: Playing a game of ten turns
+    Given a "82,71,9-,34,52,11,62,53,54,52" per turns
+    When calculate the score
+    Then return the 75
+    ✖ failed
+      AssertionError
+          + expected - actual
+      
+          -480
+          +75
+      
+          at World.<anonymous> (/home/badace7/dev/kata-wemanity/kata-cucumber-jest/bootstraps/bootstrap-nodejs-cucumber-jest/features/steps/sample.ts:25:25)
+
+Failures:
+
+1) Scenario: Playing a game of ten turns # features/sample.feature:10
+   ✔ Given a "8-,7-,9-,3-,5-,1-,6-,5-,5-,5-" per turns # features/steps/sample.ts:14
+   ✔ When calculate the score # features/steps/sample.ts:18
+   ✖ Then return the 51 # features/steps/sample.ts:22
+       AssertionError
+           + expected - actual
+
+           -54
+           +51
+
+           at World.<anonymous> (/home/badace7/dev/kata-wemanity/kata-cucumber-jest/bootstraps/bootstrap-nodejs-cucumber-jest/features/steps/sample.ts:25:25)
+
+2) Scenario: Playing a game of ten turns # features/sample.feature:11
+   ✔ Given a "82,71,9-,34,52,11,62,53,54,52" per turns # features/steps/sample.ts:14
+   ✔ When calculate the score # features/steps/sample.ts:18
+   ✖ Then return the 75 # features/steps/sample.ts:22
+       AssertionError
+           + expected - actual
+
+           -480
+           +75
+
+           at World.<anonymous> (/home/badace7/dev/kata-wemanity/kata-cucumber-jest/bootstraps/bootstrap-nodejs-cucumber-jest/features/steps/sample.ts:25:25)
+
+2 scenarios (2 failed)
+6 steps (2 failed, 4 passed)
+0m00.020s

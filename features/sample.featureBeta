@@ -1,33 +1,33 @@
 Feature: Bowling game
 
-
+@wip
     Scenario Outline: Playing a game of ten turns
-        Given a "<result>" per turns
-        When calculate the score
-        Then return the <score>
+        Given Ten pins standing on each turn
+        When play a turn and stroke Pins without bringing down all of them
+        Then score is the sum of fallen pins of each turn
         Examples:
-            | result                        | score |
+            | frames                        | score |
             | 8-,7-,9-,3-,5-,1-,6-,5-,5-,5- | 51    |
             | 82,71,9-,34,52,11,62,53,54,52 | 75    |
 
 
     @wip
     Scenario Outline: Playing a game of ten turns with a spare
-        Given a "<result>" of game
-        When calculate "<result>"
-        Then return "<score>"
+        Given Ten pins standing on each turn
+        When play a turn and make a spare
+        Then score is ten plus the next try's fallen pins
         Examples:
-            | result                        | score |
+            | frames                        | score |
             | 8/,22,--,--,--,--,--,--,--,-- | 12    |
             | 8/,22,--,--,44,--,5/,1-,--,-- | 36    |
             | 8/,22,--,--,44,--,5/,-1,--,-- | 35    |
     @wip
     Scenario Outline: Playing a game of ten turns with a strike
-        Given a "<result>" of game
-        When calculate "<result>"
-        Then return "<score>"
+        Given Ten pins standing on each turn
+        When play a turn and make a strike
+        Then score is ten plus the next two tries fallen pins
         Examples:
-            | result                       | score |
+            | frames                       | score |
             | X,22,--,--,--,--,--,--,--,-- | 14    |
             | X,22,--,--,44,--,X,11,--,--  | 40    |
             | X,22,--,--,44,--,X,-1,1-,--  | 39    |
@@ -37,11 +37,13 @@ Feature: Bowling game
 
     @wip
     Scenario Outline: Playing a game of ten turns with a strike or a spare in the last turn
-        Given a "<result>" of game
-        When calculate "<result>"
-        Then return "<score>"
+        Given Ten pins standing on each turn
+        When playing the last turn and make a strike
+        Then play another try as a bonues
+        When playing the last turn and make a spare
+        Then play another two tries as a bonues
         Examples:
-            | result                         | score |
+            | frames                         | score |
             | --,--,--,--,--,--,--,--,--,X11 | 12    |
             | --,--,--,--,--,--,--,--,--,5/1 | 11    |
             | 8-,7-,9-,3-,5-,1-,6-,5-,5-,X11 | 61    |
